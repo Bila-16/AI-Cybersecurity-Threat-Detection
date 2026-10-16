@@ -1,132 +1,210 @@
-## 🛡️ AI-Based Cybersecurity Log Analysis & Threat Detection System
+# 🛡️ AI Cybersecurity Threat Detection System
 
-## Project Overview
+**Machine Learning-Based Security Log Analysis and Anomaly Detection Using Python, Isolation Forest, and Streamlit**
 
-An AI-powered cybersecurity log analysis application developed using Python, Scikit-learn, and Streamlit.
+An AI-powered cybersecurity monitoring dashboard that analyzes security log data, identifies anomalous activities, assigns threat severity levels, and visualizes potentially suspicious behavior through an interactive web interface.
 
-The system analyzes cybersecurity logs, identifies unusual activity using the Isolation Forest machine learning algorithm, and displays security insights through an interactive dashboard.
+## 📌 Project Overview
 
-This project demonstrates the integration of artificial intelligence, machine learning, data preprocessing, and cybersecurity analytics.
+Cybersecurity systems generate large volumes of log data, making manual monitoring time-consuming and difficult.
 
-## Key Features
+This project demonstrates how machine learning and data visualization can assist security analysts in identifying unusual patterns in security logs.
 
-- Upload and analyze cybersecurity logs in CSV format
-- Detect anomalies using the Isolation Forest algorithm
-- Identify suspicious login and network activity patterns
-- Generate rule-based attack-type explanations
-- Classify flagged events by severity
-- Visualize suspicious IP addresses
-- Analyze hourly security activity
-- Display confusion matrix and evaluation metrics
-- Download security analysis reports
+The application combines an Isolation Forest anomaly detection model with rule-based threat explanations and an interactive Streamlit dashboard.
 
-## Technology Stack
+**Note:** This is an educational prototype evaluated using synthetic security log data. It is not a production-ready intrusion detection system.
+
+## 🎯 Objectives
+
+- Detect anomalous activity in security logs using machine learning.
+- Analyze failed login attempts, data transfer volume, and activity time.
+- Categorize suspicious activities by threat severity.
+- Identify potentially suspicious IP addresses.
+- Visualize hourly security activity and detection results.
+- Generate downloadable analysis reports.
+
+## 🚀 Key Features
+
+| Feature | Description |
+|---|---|
+| AI-Based Anomaly Detection | Uses Isolation Forest to identify unusual log patterns |
+| CSV Log Upload | Allows users to upload security log datasets |
+| Threat Severity Analysis | Assigns severity levels using rule-based logic |
+| Threat Explanations | Provides descriptions of potentially suspicious behavior |
+| IP Address Analysis | Highlights IP addresses associated with suspicious activity |
+| Activity Visualization | Displays charts and hourly activity trends |
+| Model Evaluation | Includes confusion matrix and classification metrics |
+| Report Generation | Supports downloading analyzed results |
+
+## 🛠️ Technology Stack
 
 | Category | Technologies |
 |---|---|
-| Programming | Python |
+| Programming Language | Python |
 | Machine Learning | Scikit-learn, Isolation Forest |
 | Data Processing | Pandas, NumPy |
-| Web Application | Streamlit |
-| Visualization | Plotly |
-| Model Storage | Joblib |
-| Development Environment | VS Code |
+| Dashboard | Streamlit |
+| Visualization | Python visualization libraries |
+| Model Storage | Joblib / Pickle |
+| Development Environment | Visual Studio Code |
+| Version Control | Git and GitHub |
 
-## Machine Learning Model
+## 🧠 Machine Learning Approach
 
-The system uses Isolation Forest for anomaly detection.
+The project uses **Isolation Forest**, an unsupervised machine learning algorithm designed for anomaly detection.
 
-Input features:
+The model analyzes three numerical features:
 
-- Failed login attempts
-- Network bytes sent
-- Hour of activity
+- `failed_attempts` — Number of failed login attempts
+- `bytes_sent` — Amount of outgoing data
+- `hour` — Hour of recorded activity
 
-The model predicts whether a log record is normal or anomalous. Rule-based logic then provides explanatory categories and severity levels.
+The trained model predicts whether a log entry is normal or anomalous.
 
-## Model Evaluation
+The dashboard combines these predictions with rule-based logic to provide additional threat severity information.
 
-The improved model was evaluated on 300 synthetic test records.
+### Workflow
+
+1. Generate or upload security log data.
+2. Preprocess the dataset.
+3. Extract the required numerical features.
+4. Apply the trained Isolation Forest model.
+5. Identify anomalous log entries.
+6. Assign severity levels and explanations.
+7. Display results in the Streamlit dashboard.
+8. Download the analysis report.
+
+## 📊 Dashboard Screenshots
+
+### AI Cybersecurity Dashboard
+
+![AI Cybersecurity Dashboard](screenshots/dashboard.png)
+
+### Hourly Security Activity
+
+![Hourly Security Activity](screenshots/hourly_activity.png)
+
+### Machine Learning Confusion Matrix
+
+![Confusion Matrix](screenshots/confusion_matrix.png)
+
+## 📈 Model Evaluation
+
+The improved Isolation Forest model was evaluated on a synthetic test dataset containing 300 records.
 
 | Metric | Result |
 |---|---|
+| Test Samples | 300 |
+| Normal Samples | 270 |
+| Suspicious Samples | 30 |
 | Accuracy | 99.67% |
-| Precision (Suspicious) | 100% |
-| Recall (Suspicious) | 96.67% |
-| F1-score (Suspicious) | 98.31% |
+| Suspicious-Class Precision | 100% |
+| Suspicious-Class Recall | 96.67% |
+| Suspicious-Class F1-Score | 98.31% |
 
-Confusion matrix:
+### Confusion Matrix
 
-- True Negatives: 270
-- True Positives: 29
-- False Positives: 0
-- False Negatives: 1
+| | Predicted Normal | Predicted Suspicious |
+|---|---:|---:|
+| Actual Normal | 270 | 0 |
+| Actual Suspicious | 1 | 29 |
 
-**Note:** These results are from synthetic data generated using similar rules for training and testing. They should not be interpreted as real-world threat detection performance.
+**Evaluation limitation:** These results were obtained from synthetically generated data. They should not be interpreted as evidence of equivalent performance on real-world network traffic or enterprise security logs. Further testing on representative, independently collected datasets is required.
 
-## Installation
+## 📁 Project Structure
 
-Clone the repository:
-
-```bash
-git clone https://github.com/YOUR_USERNAME/AI-Cybersecurity-Threat-Detection.git
+```text
+AI-Cybersecurity-Threat-Detection/
+│
+├── data/
+│   ├── realistic_train.csv
+│   ├── realistic_test.csv
+│   └── ...
+│
+├── models/
+│   ├── improved_threat_model.pkl
+│   └── threat_model.pkl
+│
+├── screenshots/
+│   ├── dashboard.png
+│   ├── hourly_activity.png
+│   └── confusion_matrix.png
+│
+├── app.py
+├── preprocessing.py
+├── generate_dataset.py
+├── generate_realistic_logs.py
+├── generate_test_data.py
+├── train_model.py
+├── train_improved_model.py
+├── evaluate_model.py
+├── evaluate_improved_model.py
+├── requirements.txt
+├── .gitignore
+└── README.md
 ```
 
-Navigate to the project:
+## ⚙️ Installation and Setup
+
+### 1. Clone the repository
 
 ```bash
+git clone https://github.com/Bila-16/AI-Cybersecurity-Threat-Detection.git
 cd AI-Cybersecurity-Threat-Detection
 ```
 
-Create a virtual environment:
+### 2. Create a virtual environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate the virtual environment on Windows:
+### 3. Activate the virtual environment
+
+On Windows PowerShell:
 
 ```powershell
 .\venv\Scripts\Activate.ps1
 ```
 
-Install dependencies:
+### 4. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Generate sample data:
+### 5. Run the Streamlit application
 
 ```bash
-python generate_realistic_logs.py
+streamlit run app.py
 ```
 
-Train the model if necessary:
+Open the local URL shown in your terminal, typically:
 
-```bash
-python train_improved_model.py
-```
+`http://localhost:8501`
 
-Run the dashboard:
+### 6. Test the dashboard
 
-```bash
-python -m streamlit run app.py
-```
+Upload a compatible sample CSV file from the `data` folder and explore the anomaly predictions, severity analysis, visualizations, and downloadable reports.
 
-## Future Enhancements
+## 🔮 Future Enhancements
 
-- Evaluation using public cybersecurity benchmark datasets
-- Better handling of false positives and false negatives
-- More advanced feature engineering
-- Repeated-IP and time-window analysis
-- Real-time security log ingestion
-- Comparison of multiple anomaly detection models
+- Evaluate the model using real-world, appropriately anonymized cybersecurity datasets.
+- Compare Isolation Forest against other anomaly detection algorithms.
+- Support additional security log formats.
+- Introduce real-time log ingestion.
+- Add automated alerts for high-severity anomalies.
+- Improve explainability and reduce false positives.
+- Deploy the dashboard as an online demonstration.
 
-## Project Limitations
+## 👩‍💻 Author
 
-This is an educational prototype. It uses synthetic logs, and its predictions represent anomalies rather than verified attacks. Attack explanations and severity levels are generated using demonstration rules.
+**Bila Binoy**
 
-## Project Purpose
+Computer Science and Engineering Graduate | AI/ML and Cybersecurity Enthusiast
 
-Developed as a hands-on AI/ML and cybersecurity project to demonstrate Python programming, data analysis, anomaly detection, model evaluation, and dashboard development.
+GitHub: [Bila-16](https://github.com/Bila-16)
+
+## 📄 Disclaimer
+
+This project is intended for educational, research, and portfolio demonstration purposes. Anomalies identified by the model are not necessarily confirmed cybersecurity attacks.
