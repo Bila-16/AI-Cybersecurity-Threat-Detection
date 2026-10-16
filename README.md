@@ -182,6 +182,12 @@ streamlit run app.py
 Open the local URL shown in your terminal, typically:
 
 `http://localhost:8501`
+           or
+ ## 🌐 Live Application
+
+Try the AI Cybersecurity Threat Detection Dashboard:
+
+[🚀 Launch Live Dashboard](https://ai-cybersecurity-threat-detection-bila.streamlit.app/)          
 
 ### 6. Test the dashboard
 
